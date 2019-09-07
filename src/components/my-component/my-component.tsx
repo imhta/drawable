@@ -1,7 +1,7 @@
 import { Component, h } from '@stencil/core';
 
 @Component({
-  tag: 'my-component',
+  tag: 'drawable-component',
   styleUrl: 'my-component.css',
   shadow: true
 })
@@ -26,6 +26,6 @@ export class MyComponent {
   // }
 
   render() {
-    return <div>Hello, World!</div>;
+    return <h1>Hello, World!</h1>;
   }
 }

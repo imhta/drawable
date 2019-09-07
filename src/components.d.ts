@@ -9,27 +9,27 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {}
+  interface DrawableComponent {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLDrawableComponentElement extends Components.DrawableComponent, HTMLStencilElement {}
+  var HTMLDrawableComponentElement: {
+    prototype: HTMLDrawableComponentElement;
+    new (): HTMLDrawableComponentElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'drawable-component': HTMLDrawableComponentElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {}
+  interface DrawableComponent extends JSXBase.HTMLAttributes<HTMLDrawableComponentElement> {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'drawable-component': DrawableComponent;
   }
 }
 
