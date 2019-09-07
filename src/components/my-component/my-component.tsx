@@ -24,8 +24,9 @@ export class MyComponent {
   // private getText(): string {
   //   return format(this.first, this.middle, this.last);
   // }
+  context = document.getElementById('drawable-canvas');
 
   render() {
-    return <h1>Hello, World!</h1>;
+    return <canvas id="drawable-canvas"></canvas>;
   }
 }
