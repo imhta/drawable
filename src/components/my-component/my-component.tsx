@@ -6,7 +6,12 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true
 })
 export class MyComponent {
-
+  componentDidRender(){
+    var canvas : any = document.getElementById("drawable-canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(20, 20, 150, 100);
+  }
   /**
    * width
    */
