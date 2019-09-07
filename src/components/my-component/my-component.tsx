@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'drawable-component',
@@ -6,15 +6,16 @@ import { Component, h } from '@stencil/core';
   shadow: true
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  // @Prop() first: string;
 
   /**
-   * The middle name
+   * width
    */
-  // @Prop() middle: string;
+  @Prop() width: string;
+
+  /**
+   * height
+   */
+  @Prop() height: string;
 
   /**
    * The last name
@@ -24,9 +25,8 @@ export class MyComponent {
   // private getText(): string {
   //   return format(this.first, this.middle, this.last);
   // }
-  context = document.getElementById('drawable-canvas');
 
   render() {
-    return <canvas id="drawable-canvas"></canvas>;
+    return <canvas id="drawable-canvas" width={this.width} height={this.height}></canvas>;
   }
 }

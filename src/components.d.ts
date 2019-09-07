@@ -9,7 +9,16 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface DrawableComponent {}
+  interface DrawableComponent {
+    /**
+    * height
+    */
+    'height': string;
+    /**
+    * width
+    */
+    'width': string;
+  }
 }
 
 declare global {
@@ -26,7 +35,16 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface DrawableComponent extends JSXBase.HTMLAttributes<HTMLDrawableComponentElement> {}
+  interface DrawableComponent extends JSXBase.HTMLAttributes<HTMLDrawableComponentElement> {
+    /**
+    * height
+    */
+    'height'?: string;
+    /**
+    * width
+    */
+    'width'?: string;
+  }
 
   interface IntrinsicElements {
     'drawable-component': DrawableComponent;
