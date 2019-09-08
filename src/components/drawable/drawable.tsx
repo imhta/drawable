@@ -164,11 +164,6 @@ export class Drawable {
     requestAnimationFrame(() => this.renderCanvas());
   }
   render() {
-    return (
-      <canvas
-        width={this.width}
-        height={this.height}
-      ></canvas>
-    );
+    return <canvas width={this.width} height={this.height}></canvas>;
   }
 }
