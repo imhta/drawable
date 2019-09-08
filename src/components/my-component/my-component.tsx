@@ -1,23 +1,21 @@
-import { Component, Prop, h, Element, State } from '@stencil/core';
+import { Component, Prop, h, Element, State } from "@stencil/core";
 
 @Component({
-  tag: 'drawable-component',
-  styleUrl: 'my-component.css',
+  tag: "drawable-component",
+  styleUrl: "my-component.css",
   shadow: true
 })
 export class MyComponent {
-
   @Prop() width: number;
 
   @Prop() height: number;
-
   @Prop() penWidth: number;
   @Element() el: HTMLElement;
 
   @State() drawing: boolean;
 
   @Prop() color: string;
-  @Prop({ context: 'isServer' }) private isServer: boolean;
+  @Prop({ context: "isServer" }) private isServer: boolean;
 
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
@@ -38,14 +36,14 @@ export class MyComponent {
 
   componentDidLoad() {
     if (!this.isServer) {
-      this.canvas = this.el.shadowRoot.querySelector('canvas');
+      this.canvas = this.el.shadowRoot.querySelector("canvas");
       // this.canvas = this.canvasToWrite;
-     //  console.log(this.canvas)
-      this.context = this.canvas.getContext('2d');
+      //  console.log(this.canvas)
+      this.context = this.canvas.getContext("2d");
 
-      this.context.lineCap = 'round';
-      this.context.lineJoin = 'round';
-      this.context.globalCompositeOperation = 'hard-light';
+      this.context.lineCap = "round";
+      this.context.lineJoin = "round";
+      this.context.globalCompositeOperation = "hard-light";
       this.context.globalAlpha = 1;
 
       this.context.strokeStyle = this.color;
@@ -53,16 +51,11 @@ export class MyComponent {
       this.context.lineWidth = this.penWidth;
       this.oldWidth = this.penWidth;
 
-
-      console.log(this.color);
-      console.log(this.penWidth);
-
       // setup for drawing
       this.setupMouseEvents();
       this.setupTouchEvents();
 
       this.renderCanvas();
-
     }
   }
 
@@ -73,48 +66,72 @@ export class MyComponent {
     this.lastPos = this.mousePos;
 
     // handle mouse events
-    (this.canvas.addEventListener as any)("mousedown", (e) => {
-      this.drawing = true;
-      this.lastPos = this.getMousePos(this.canvas, e);
-    }, { passive: true});
+    (this.canvas.addEventListener as any)(
+      "mousedown",
+      e => {
+        this.drawing = true;
+        this.lastPos = this.getMousePos(this.canvas, e);
+      },
+      { passive: true }
+    );
 
-    (this.canvas.addEventListener as any)("mouseup", () => {
-      this.drawing = false;
-    }, { passive: true });
+    (this.canvas.addEventListener as any)(
+      "mouseup",
+      () => {
+        this.drawing = false;
+      },
+      { passive: true }
+    );
 
-    (this.canvas.addEventListener as any)("mousemove", (e) => {
-      this.mousePos = this.getMousePos(this.canvas, e);
-    }, { passive: true });
+    (this.canvas.addEventListener as any)(
+      "mousemove",
+      e => {
+        this.mousePos = this.getMousePos(this.canvas, e);
+      },
+      { passive: true }
+    );
   }
 
   setupTouchEvents() {
-    (this.canvas.addEventListener as any)("touchstart", (e) => {
-      this.mousePos = this.getTouchPos(this.canvas, e);
-      const touch = e.touches[0];
+    (this.canvas.addEventListener as any)(
+      "touchstart",
+      e => {
+        this.mousePos = this.getTouchPos(this.canvas, e);
+        const touch = e.touches[0];
 
-      const mouseEvent = new MouseEvent("mousedown", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
+        const mouseEvent = new MouseEvent("mousedown", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
 
-      this.canvas.dispatchEvent(mouseEvent);
-    }, { passive: true});
+        this.canvas.dispatchEvent(mouseEvent);
+      },
+      { passive: true }
+    );
 
-    (this.canvas.addEventListener as any)("touchend", () => {
-      const mouseEvent = new MouseEvent("mouseup", {});
-      this.canvas.dispatchEvent(mouseEvent);
-    }, { passive: true });
+    (this.canvas.addEventListener as any)(
+      "touchend",
+      () => {
+        const mouseEvent = new MouseEvent("mouseup", {});
+        this.canvas.dispatchEvent(mouseEvent);
+      },
+      { passive: true }
+    );
 
-    (this.canvas.addEventListener as any)("touchmove", (e) => {
-      const touch = e.touches[0];
+    (this.canvas.addEventListener as any)(
+      "touchmove",
+      e => {
+        const touch = e.touches[0];
 
-      const mouseEvent = new MouseEvent("mousemove", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
+        const mouseEvent = new MouseEvent("mousemove", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
 
-      this.canvas.dispatchEvent(mouseEvent);
-    }, { passive: true });
+        this.canvas.dispatchEvent(mouseEvent);
+      },
+      { passive: true }
+    );
   }
 
   getMousePos(canvasDom, mouseEvent) {
@@ -147,6 +164,12 @@ export class MyComponent {
     requestAnimationFrame(() => this.renderCanvas());
   }
   render() {
-    return <canvas id="drawable-canvas" width={this.width} height={this.height}></canvas>;
+    return (
+      <canvas
+        id="drawable-canvas"
+        width={this.width}
+        height={this.height}
+      ></canvas>
+    );
   }
 }
