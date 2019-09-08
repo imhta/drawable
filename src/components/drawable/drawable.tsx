@@ -166,7 +166,6 @@ export class Drawable {
   render() {
     return (
       <canvas
-        id="drawable-canvas"
         width={this.width}
         height={this.height}
       ></canvas>
