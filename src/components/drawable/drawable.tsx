@@ -2,10 +2,10 @@ import { Component, Prop, h, Element, State } from "@stencil/core";
 
 @Component({
   tag: "drawable-component",
-  styleUrl: "drawable-component.css",
+  styleUrl: "drawable.css",
   shadow: true
 })
-export class DrawableComponent {
+export class MyComponent {
   @Prop() width: number;
 
   @Prop() height: number;
