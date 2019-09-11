@@ -2,10 +2,7 @@
 
 # Drawable Component
 
-This is a drawable standalone Web Component using Stencil.
-
-# Drawable
-
+This is a drawable standalone Web Component using Stencil, where you can draw.
 
 
 ## Getting Started
