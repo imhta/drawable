@@ -1,5 +1,5 @@
 {
-  "name": "drawable",
+  "name": "drawable-component",
   "version": "0.0.1",
   "description": "web component for drawing",
   "main": "dist/index.js",
