@@ -38,7 +38,7 @@ npm test
 
 ### Script tag
 
-- Put a script tag similar to this `<script src='https://unpkg.com/drawable-component@0.0.1/dist/drawable.js'></script>` in the head of your index.html
+- Put a script tag similar to this `<script src='https://cdn.jsdelivr.net/npm/drawable-component@0.0.1/dist/drawable.min.js'></script>` in the head of your index.html
 - Then you can use the element anywhere in your template, JSX, html etc
 
 ### Node Modules
